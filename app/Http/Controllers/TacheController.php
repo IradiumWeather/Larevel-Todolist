@@ -8,7 +8,10 @@ use Illuminate\Http\Request;
 class TacheController extends Controller
 {
     public function index(){
-        $taches= Tache::all()->sortBy('id',3,true);
+        $taches= Tache::all()->sortBy([
+            ['status','asc'],
+            ['id','desc'],
+        ]);
         return view('taches.index',compact('taches'));
     }
 
