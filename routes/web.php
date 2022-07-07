@@ -18,4 +18,10 @@ Route::get('/',[TacheController::class,'index'])->name('index');
 
 Route::post('/',[TacheController::class,'addtask'])->name('addTask');
 
-Route::get('/{id}',[TacheController::class,'taskState'])->name('state');
+Route::get('/{tache}',[TacheController::class,'taskState'])->name('state');
+
+Route::delete('/delete/{tache}',[TacheController::class,'deleteTask'])->name('supp');
+
+Route::get('/modifier/{tache}',[TacheController::class,'modifier'])->name('modifier');
+
+Route::post('/modifier/{tache}',[TacheController::class,'update'])->name('updateTask');

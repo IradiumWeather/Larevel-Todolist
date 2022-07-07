@@ -22,10 +22,25 @@ class TacheController extends Controller
         return redirect(route('index'));
     }
 
-    public function taskState($id){
-        $tache = Tache::find($id);
+    public function taskState(Tache $tache){
         $tache->status = !$tache->status;
         $tache->save();
         return redirect()->back();
     }
+
+    public function modifier(Tache $tache){
+        return view('taches.modifier',['tache' => $tache]);
+    }
+
+    public function update(Request $request,Tache $tache){
+        $tache->content=$request->tache;
+        $tache->save();
+        return redirect(route('index'));
+    }
+
+    public function deleteTask(Tache $tache){
+        $tache->delete();
+        return redirect(route('index'));
+    }
+
 }
